@@ -1,0 +1,5 @@
+# Pakete fuer den Build der JupyterLite-Seite (nur beim Bauen noetig, nicht bei den Studierenden)
+jupyterlite-core>=0.5,<0.7
+jupyterlite-pyodide-kernel>=0.5,<0.7
+jupyterlab>=4.3,<4.5
+notebook>=7.3,<7.5

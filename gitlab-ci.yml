@@ -1,0 +1,16 @@
+# GitLab Pages: baut die JupyterLite-Seite bei jedem Push auf den Default-Branch.
+# GitLab veroeffentlicht automatisch den Ordner "public" aus dem Job "pages".
+image: python:3.11
+
+pages:
+  stage: deploy
+  script:
+    # Build-Werkzeuge installieren (nur auf dem Runner, nicht bei den Studierenden)
+    - python -m pip install -r requirements.txt
+    # Notebooks + CSV aus ./content einpacken, Ergebnis nach ./public
+    - jupyter lite build --contents content --output-dir public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
